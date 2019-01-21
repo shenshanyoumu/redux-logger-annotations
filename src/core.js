@@ -164,6 +164,7 @@ function printBuffer(buffer, options) {
     }
 
     if (logger.withTrace) {
+      // 注意，如果使用console作为logger，则console原生支持group、groupEnd、groupCollapsed()这些方法
       logger.groupCollapsed("TRACE");
       logger.trace();
       logger.groupEnd();
