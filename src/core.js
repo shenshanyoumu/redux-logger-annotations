@@ -65,7 +65,7 @@ function printBuffer(buffer, options) {
       took = nextEntry.started - started;
     }
 
-    // Message
+    // 将action对象格式化处理后，作为日志的输出内容
     const formattedAction = actionTransformer(action);
     const isCollapsed =
       typeof collapsed === "function"
