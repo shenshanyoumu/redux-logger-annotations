@@ -43,10 +43,19 @@ export function render(diff) {
   }
 }
 
+/**
+ *
+ * @param {*} prevState redux上一个状态
+ * @param {*} newState 触发action后，修改得到的新状态
+ * @param {*} logger 日志记录组件
+ * @param {*} isCollapsed 表示日志分组是否需要在控制台被收缩
+ */
 export default function diffLogger(prevState, newState, logger, isCollapsed) {
+  // 对比前后state的差异
   const diff = differ(prevState, newState);
 
   try {
+    // 下面针对标签"diff"进行分组
     if (isCollapsed) {
       logger.groupCollapsed("diff");
     } else {
@@ -57,6 +66,7 @@ export default function diffLogger(prevState, newState, logger, isCollapsed) {
   }
 
   if (diff) {
+    // 针对两个对象的差异数组，分别输出打印
     diff.forEach(elem => {
       const { kind } = elem;
       const output = render(elem);
